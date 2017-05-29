@@ -1,10 +1,10 @@
+import autobind from 'autobind-decorator';
 import CodeMirror from 'codemirror';
 import 'codemirror-graphql/mode';
 import 'codemirror/lib/codemirror.css';
 import React, { Component } from 'react';
-import Output from './components/Output/Output.jsx';
 import css from './App.scss';
-import autobind from 'autobind-decorator';
+import Output from './components/Output/Output.jsx';
 
 const initialValue = `
 # Paste or drop some GraphQL queries or schema

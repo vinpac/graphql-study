@@ -98,7 +98,7 @@ class TreeItem extends React.Component {
     }
 
     if (isBoolean) {
-      return token ? 'true': 'false';
+      return token ? 'true' : 'false';
     }
 
     if (token === undefined) {
@@ -161,6 +161,9 @@ class TreeItem extends React.Component {
       isObject,
       hasChildren,
     } = this.state;
+    const constructorName = isClassInstance
+      ? token.type || token.constructor.name
+      : token.constructor.name;
 
     return (
       <div
@@ -186,17 +189,17 @@ class TreeItem extends React.Component {
               () => removeCodeHighlight(token, { isArray, isObject })
             )}
           >
-            {name || token.constructor.name}
+            {name || constructorName}
           </button>
           <span>
             <span className={css.valueSeparator}>:</span>
-            {name && isClassInstance &&
+            {(name && isClassInstance) &&
               <button
                 type="button"
                 onClick={this.toggle}
                 className={`${css.name} ${css.classInstanceName}`}
               >
-                {token.constructor.name}
+                {constructorName}
               </button>
             }
             <span className={css.value}>

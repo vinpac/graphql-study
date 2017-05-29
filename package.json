@@ -2,6 +2,7 @@
   "name": "css",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://vinpac.github.io/graphql-study",
   "dependencies": {
     "autobind-decorator": "^1.4.1",
     "classnames": "^2.2.5",
@@ -62,7 +63,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [

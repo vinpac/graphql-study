@@ -46,38 +46,12 @@ class Output extends React.Component {
         }, {
           line: end.line - 1,
           ch: end.column - 1,
-        },
-        {
-          className: css.errorInCode
+        }, {
+          className: css.errorInCode,
         });
       }
       return { error };
     }
-  }
-
-  renderError(error) {
-    if (/^Parser/.test(error.name)) {
-      return (
-        <div>
-          {error.message}
-        </div>
-      );
-    }
-
-    return (
-      <div>
-        Error
-      </div>
-    );
-  }
-
-  renderAST() {
-    const { ast } = this.state;
-    return (
-      <div>
-        {this.renderASTElement(ast)}
-      </div>
-    );
   }
 
   @autobind
@@ -147,6 +121,15 @@ class Output extends React.Component {
     }
   }
 
+  renderAST() {
+    const { ast } = this.state;
+    return (
+      <div>
+        {this.renderASTElement(ast)}
+      </div>
+    );
+  }
+
   render() {
     const { ast } = this.state;
     let children;
@@ -160,7 +143,7 @@ class Output extends React.Component {
             <span>Error{error.name ? `: ${error.name}` : ''}</span>
           </div>
           <div className={css.errorBody}>
-            {this.renderError(error)}
+            {error.message || 'Error'}
           </div>
         </div>
       );
